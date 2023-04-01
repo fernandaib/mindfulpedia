@@ -1,0 +1,606 @@
+/*
+**Utilize a minimum of 8 global variables
+-Lines: 80, 86, 87, 88, 96, 100, 104, 108 and more...
+
+**Utilize a minimum of 2 scoped variables (use a comment to identify these variables and explain what they are needed).
+-Lines: 557 and 574. They are used to change side margins of content in screens =<1200px.
+
+**Create an alternate style theme and use it on at least 2 components within your webpage
+-Lines: [326 to 329] and [415 to 417]
+*/
+
+/* ------Global Variables------ */
+:root{
+    /* Fonts */
+    --title: 'Alegreya', serif;
+    --content: 'Lato', sans-serif;
+
+    /* Text-Thickness */
+    --fw-l: 300;
+    --fw-m: 500;
+    --fw-b: 700;
+
+    /* Color */
+    --primary-color: #652AB4;
+    --secondary-color: #E3D1FB;
+    --third-color: #FFF;
+    --text-color: #5D5D5D;
+    --body-color: #F8F6F9;
+    --shadow: 1px 1px 2px black;
+    --shadow-photo: 4px 4px 3px #C2C2C2;
+    --designer-color: #CE99F2;
+
+    /* Spacing */    
+    --space-header: 0.5em 2em;
+    --space-aside-l: 0.5em 5% 0.5em 20%;
+    --space-aside-r: 0.5em 20% 0.5em 5%;
+    --space-main: 2em 5%;
+    --line-spacing: 1.5;
+    --margin-s-hdr: 8%;
+    --margin-m-hdr: 10%;
+    --margin-l-hdr: 20%;
+    --padding-header: 0.5em;
+    --padding-hero-title: 0 20%;
+    --padding-quote: 0 5% 0 40%;
+    --padding-quote-800: 0 20% 0 45%; 
+    --gap-card: 1em;
+    --gap-container-footer: 15%;    
+    --padding-footer: 1em 0 0.5em;
+    --space-sect-footer: 1em;
+
+    /* Sizing */    
+    --size-hero: 4em;
+    --size-quote: 1.5em;
+    --size-content: 1em;
+    --size-card: 0.8em;
+    --size-figcaption: 0.5em;
+    --width-card: 180px;
+}
+
+
+/* ---------- BODY ---------- */
+body{
+    /* new design system */
+    --bg-card: var(--third-color); 
+    --text-color-card: var(--text-color);
+    --title-color-card: var(--primary-color); 
+    --icon-color-card: var(--primary-color);
+    --border-header: solid 4px var(--secondary-color);
+
+    --footer-text-font: var(--title);
+    --footer-text-color:var(--primary-color);
+    --footer-text-size: var(--size-content);  
+
+    display: grid;
+    grid-template-columns: 1fr;
+    height: 100vh;      
+}
+
+/* ---------- HEADER ---------- */
+header{
+    background-color: var(--body-color);       
+    display: flex;
+    width: 100%;
+    justify-content:flex-end;
+    position: sticky;
+    top: 0;
+    left: 0;    
+    z-index: 100;
+    padding-top: var(--padding-header);
+    padding-bottom: var(--padding-header);
+    border-bottom: var(--border-header); /* NEW! */
+}
+
+header h1 span{
+    color: var(--primary-color);    
+}
+
+.logo{ 
+    font-family: var(--content);  
+    font-size: 1.5em;    
+    margin-right: auto ;
+    align-items: center;
+    margin-left: var(--margin-s-hdr);    
+}
+
+header .fa-solid{
+    color: var(--primary-color);
+}
+
+nav{
+    background-color: var(--secondary-color);
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    display: none;    
+}
+
+nav li{
+    padding: 1em 1em;
+    border-bottom: solid 1px var(--third-color);
+    font: 1em var(--content);    
+}
+
+nav a{        
+    color: var(--text-color);         
+}
+
+header a{   
+    font-weight: var(--fw-b);
+}
+
+/* ********** Links ********** */
+.logo a:hover{    
+    background-color: var(--secondary-color);       
+    padding: 5px; 
+}
+
+header a:link{
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+header a:visited{
+    color: var(--primary-color);
+}
+
+header a:hover{
+    color: var(--third-color);    
+    border-bottom: solid 2px var(--third-color);    
+    padding: 2px 10px;     
+}
+
+header a:active{
+    text-decoration: none;
+}
+/* *************************** */
+
+.toggle-btn{    
+    position: absolute;    
+    align-items: center;
+    margin-right: var(--margin-s-hdr);        
+}
+
+.toggle-btn span{
+    display: inline-block;
+    font-size: 1.5em;  
+}
+
+nav.show{
+    display: block;
+}
+
+/* ---------- HERO ---------- */
+.hero{
+    background-image: url(../images/beach640.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    position: relative;   
+
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3.5em;
+}
+
+.hero h1{    
+    font: italic 4em var(--title);
+    font-weight: var(--fw-b);
+    color: var(--third-color);
+
+    text-shadow: var(--shadow);
+    padding: var(--padding-hero-title);
+}
+
+blockquote{    
+    font-family: var(--title); 
+    font-style: italic;
+    font-size: var(--size-quote);
+    color: var(--third-color);
+    font-weight: var(--fw-m);
+    width: 100%;
+    text-shadow: var(--shadow);
+}
+
+blockquote p{
+    text-align: left;
+    padding: var(--padding-quote);
+}
+
+.photoAutor{
+    color: var(--text-color);
+    font-family: 'Lato', sans-serif;
+    font-size: 8px;
+    position: absolute;
+    bottom: 0%;
+    right: 0%;  
+}
+
+.photoAutor a:link{
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.photoAutor a:visited{
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.photoAutor a:hover{
+    color: var(--third-color);
+}
+
+/* ---------- MAIN ---------- */
+main{
+    background-color: var(--body-color);
+    font: italic var(--size-content) var(--content); 
+    line-height: var(--line-spacing);
+    padding: var(--space-main);
+    
+}
+
+/* ---------- ASIDE- general ---------- */
+aside{
+    background-color: var(--body-color);
+}
+
+aside h2{
+    font: var(--size-quote) var(--title);    
+    color: var(--text-color);    
+    border-bottom: 2px solid var(--primary-color);
+    font-weight: var(--fw-b);
+}
+
+/* ---------- ASIDE LEFT - biography ---------- */
+
+img{
+    box-shadow: var(--shadow-photo); 
+}
+
+figcaption{
+    margin-top: var(--padding-header);
+    font: var(--size-card) var(--content);
+    color: var(--text-color);
+}
+
+.bio{
+    padding: var(--space-main);
+    text-align: center;    
+}
+
+aside p{
+    font: italic var(--size-content) var(--content); 
+    line-height: var(--line-spacing);
+    text-align: left;
+}
+
+.bio{
+    order: 1;
+}
+
+/* ---------- ASIDE RIGHT -cards ---------- */
+.phases{
+    padding: var(--space-main);
+}
+
+.cards{    
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;    
+    gap: var(--gap-card);    
+}
+
+.cards article{
+    border: 1px solid var(--secondary-color);
+    border-radius: 8px;
+    font: var(--size-card) var(--content);
+    font-weight: var(--fw-b);
+    text-align: center;    
+    color: var(--text-color-card); /* CHANGED! */
+    background-color: var(--bg-card); /* NEW! */
+}
+
+.cards .fa-solid{    
+    color: var(--icon-color-card); /* CHANGED! */
+    font-size: var(--size-quote);    
+    padding: 5px;
+    text-align: center;   
+}
+
+.cards h2{    
+    text-align: center;
+    border-bottom: 2px solid var(--secondary-color);
+    width: var(--width-card);
+    color: var(--title-color-card); /* CHANGED! */
+    
+}
+
+[class*='style-']{
+    background-color: var(--bg-card);
+    color: var(--text-color-card);
+}
+
+/* Theming with custom properties */
+.cards article.style-inverse{
+    --bg-card : var(--primary-color);
+    --text-color-card : var(--third-color);
+    --title-color-card: var(--third-color);
+    --icon-color-card: var(--third-color);
+}
+
+/* ---------- FOOTER ---------- */
+footer{
+    background-color:var(--secondary-color);
+    color: var(--footer-text-color);
+    font-family: var(--footer-text-font);
+    font-size: var(--footer-text-size);
+
+    order: 1;
+    margin-top: auto;    
+    text-align: center;
+    padding: var(--padding-footer);    
+}
+
+.socialDetails{    
+    display: flex;
+    flex-direction: column;      
+    font-weight: var(--fw-b);   
+}
+
+.socialDetails h2{
+    color: var(--text-color);
+    font-weight: var(--fw-b);   
+    margin-bottom: var(--gap-card);
+}
+
+.socialDetails i{    
+    width: 1.5em;   
+    font-size: var(--size-content);
+}
+
+.socialMedia{    
+    margin-top: var(--space-sect-footer);
+    margin-bottom: var(--space-sect-footer); 
+    order: 1;
+}
+
+.fa-brands{    
+    justify-content: space-between;    
+}
+
+.contact{ 
+    margin-top: var(--space-sect-footer);
+    margin-bottom: var(--space-sect-footer);
+}
+
+.contact li{    
+    line-height: var(--line-spacing);
+    text-decoration: none;
+}
+
+/* ********** Links ********** */
+footer a:link{
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+footer a:visited{
+    color: var(--primary-color);
+}
+
+footer a:hover{    
+    background-color: var(--third-color);
+    padding: 3px; 
+}
+
+footer a:active{
+    text-decoration: none;
+}
+/* *************************** */
+.credits{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    
+}
+
+.credits p{
+    font-family: var(--footer-text-font);
+    font-size: var(--footer-text-size);
+    color: var(--footer-text-color);
+    border-top: 1px solid var(--third-color);
+    padding-top: 0.5em;
+    order: 1;   
+}
+
+/* Theming with custom properties */
+.credits p.designer{
+    --footer-text-font: var(--content);
+    --footer-text-size: var(--size-card);
+    --footer-text-color: var(--designer-color);
+
+    border-top: none;
+}
+
+/* ==================== SCREEN MIN 800 ==================== */
+
+@media screen and (min-width: 800px){
+    /* ---------- BODY ---------- */
+    body{
+        grid-template-columns: 1fr 2fr 1fr;
+    }
+    header, .hero, figcaption, footer{
+        grid-column: 1 / span 3;
+    }
+
+    /* ---------- HEADER ---------- */
+    header{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;     
+    }
+
+    /* ********** Links ********** */
+    nav a{        
+        color: var(--text-color);
+        text-decoration: underline;     
+    }
+
+    nav a:link{
+        color: var(--primary-color);            
+    }
+
+    nav a:visited{        
+        color: var(--primary-color);        
+    }
+
+    nav a:hover{    
+        background-color: var(--secondary-color);        
+        color: var(--primary-color);
+        padding: 5px; 
+    }
+
+    nav a:active{
+        color: var(--primary-color);     
+    }
+
+    /* *************************** */    
+    .toggle-btn{
+        display: none;
+    }
+
+    .logo{
+        margin-left: var(--margin-m-hdr);
+    }
+
+    nav{
+        all: unset;
+        margin-right: var(--margin-m-hdr);
+    }
+
+    nav ul{
+        display: flex;
+    }
+
+    nav li{               
+        border-bottom: none;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero{
+        background-image: url(../images/beach1920.jpg);
+        background-position: center;
+        height: 600px;
+    }
+
+    blockquote p{
+        text-align: left;
+        padding: var(--padding-quote-800); 
+    }
+
+    /* ---------- ASIDE LEFT - biography ---------- */
+    .bio{    
+        padding: var(--space-aside-l);    
+    }
+    /* ---------- ASIDE RIGHT -cards ---------- */
+    .phases{    
+        padding: var(--space-aside-r);
+    }
+
+    .cards{       
+        display: block;
+        flex-wrap: nowrap;
+    }
+
+    .cards article{
+        margin: 0 0.5em 0.5em 0.5em;        
+    }
+
+    .cards h2{
+        width: 100%;
+    }
+
+    /* ---------- FOOTER ---------- */
+    .bio, footer{
+        order: 0;
+    }
+
+    .contact{
+        text-align: left;
+    }
+
+    .socialDetails{
+        flex-direction: row;
+        justify-content: center;
+        gap: var(--gap-container-footer);
+    }
+
+    .credits{
+        position: relative;
+    }
+    
+    .credits p{
+        font-family: var(--footer-text-font);
+        font-size: var(--footer-text-size);
+        color: var(--footer-text-color);
+        border-top: 1px solid var(--third-color);
+        padding-top: 0.5em;   
+    }
+    
+    /* Theming with custom properties */
+    .credits p.designer{
+        --footer-text-font: var(--content);
+        --footer-text-size: var(--size-card);
+        --footer-text-color: var(--designer-color);
+    
+        border-top: none;    
+        position: absolute;
+        bottom: 0%;
+        right: 0%;
+    }
+}
+
+/* ==================== SCREEN MIN 1200 ==================== */
+@media screen and (min-width: 1200px){
+    /* ---------- HEADER ---------- */
+    nav{        
+        margin-right: 20%;
+    }
+
+    .logo {        
+        margin-left: 20%;
+    }
+
+    /* ---------- BODY ---------- */
+    body{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    /* ---------- ASIDE RIGHT -cards ---------- */    
+    .phases{    
+        --space-aside-right: 0.5em 55% 0.5em 5%; /*scoped variables*/
+        padding: var(--space-aside-right);
+    }
+    .cards{
+        --margin-card-1200:0 0.5em 0.5em 0.5em;  
+        margin: var(--margin-card-1200);       
+    }
+
+    .cards ul{
+        text-align: left;
+        list-style: disc;
+        list-style-position: inside;
+        padding: var(--gap-card);        
+    }
+
+    /* ---------- ASIDE LEFT - biography ---------- */
+    .bio{   
+        --space-aside-left: 0.5em 5% 0.5em 55%; /*scoped variables*/
+        padding: var(--space-aside-left);    
+    }
+
+}
